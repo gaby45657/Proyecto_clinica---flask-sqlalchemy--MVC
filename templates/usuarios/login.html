@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Imagen de fondo */
+            background-image: url("{{ url_for('static', filename='img/fondo.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Caja del login */
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .box {
+            padding: 2rem;
+            border-radius: 20px;
+
+            /* efecto vidrio elegante */
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(8px);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            width: 360px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 30%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="box">
+
+        <!-- Logo -->
+        <div class="has-text-centered">
+            <img src="{{ url_for('static', filename='img/logo.jpg') }}"alt="Logo Clínica"class="logo">
+        </div>
+
+        <h1 class="title has-text-centered mb-5">
+            Iniciar Sesión
+        </h1>
+
+        <form method="POST">
+            <!-- Usuario -->
+            <div class="field">
+                <label class="label"> Usuario</label>
+
+                <div class="control">
+                    <input class="input" type="text" name="username" placeholder="Ingrese usuario"required >
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="field">
+                <label class="label">Contraseña</label>
+
+                <div class="control">
+                    <input class="input" type="password" name="password" placeholder="Ingrese contraseña"required>
+                </div>
+            </div>
+
+            <button class="button is-primary is-fullwidth mt-4" type="submit">
+                Ingresar
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

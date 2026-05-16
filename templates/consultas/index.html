@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Consultas {% endblock %}
+
+{% block content %}
+
+<h1 class="title has-text-centered">Lista de Consultas</h1>
+<a href="{{ url_for('consulta.create') }}" class="button is-primary mb-3"> Nuevo </a>
+<table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Medico</th>
+            <th>Fecha</th>
+            <th>Diagnostico</th>
+            <th>Tratamiento</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in consultas %}
+        <tr>
+            <td>{{ item.id_consulta }}</td>
+            <td>{{item.paciente.nombre}}</td>
+            <td>{{item.medico.nombre}}</td>
+            <td>{{item.fecha.strftime('%d/%m/%Y')}}</td>  
+            <td>{{ item.diagnostico }}</td>
+            <td>{{ item.tratamiento}}</td>
+            <td>
+                <a href="{{url_for('consulta.edit',id_consulta=item.id_consulta)}}"  class="button is-warning">Editar</a>
+            </td>
+            <td>
+                <a href="{{url_for('consulta.delete',id_consulta=item.id_consulta)}}" class="button is-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

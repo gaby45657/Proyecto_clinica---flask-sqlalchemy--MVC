@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Citas | Editar
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <div class="box">
+
+            <h1 class="title has-text-centered">
+                Editar Cita
+            </h1>
+
+            <form action="{{ url_for('cita.edit',
+            id_cita=cita.id_cita) }}"
+                  method="POST">
+
+                <!-- Paciente -->
+                <div class="field">
+                    <label class="label">
+                        Paciente
+                    </label>
+
+                    <div class="control">
+                        <div class="select is-fullwidth">
+
+                            <select
+                                name="id_paciente"
+                                required>
+
+                                {% for paciente in pacientes %}
+                                <option
+                                    value="{{ paciente.id_paciente }}"
+                                    {% if paciente.id_paciente ==
+                                    cita.id_paciente %}
+                                    selected
+                                    {% endif %}>
+
+                                    {{ paciente.nombre }}
+
+                                </option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Médico -->
+                <div class="field">
+                    <label class="label">
+                        Médico
+                    </label>
+
+                    <div class="control">
+                        <div class="select is-fullwidth">
+
+                            <select
+                                name="id_medico"
+                                required>
+
+                                {% for medico in medicos %}
+                                <option
+                                    value="{{ medico.id_medico }}"
+                                    {% if medico.id_medico ==
+                                    cita.id_medico %}
+                                    selected
+                                    {% endif %}>
+
+                                    {{ medico.nombre }}
+
+                                </option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fecha -->
+                <div class="field">
+                    <label class="label">
+                        Fecha y Hora
+                    </label>
+
+                    <div class="control">
+                        <input
+                            class="input"
+                            type="datetime-local"
+                            name="fecha_hora"
+                            value="{{ cita.fecha_hora.strftime('%Y-%m-%dT%H:%M') }}"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Motivo -->
+                <div class="field">
+                    <label class="label">
+                        Motivo
+                    </label>
+
+                    <div class="control">
+                        <textarea
+                            class="textarea"
+                            name="motivo"
+                            required>{{ cita.motivo }}</textarea>
+                    </div>
+                </div>
+
+                <!-- Estado -->
+                <div class="field">
+                    <label class="label">
+                        Estado
+                    </label>
+
+                    <div class="control">
+                        <div class="select is-fullwidth">
+
+                            <select name="estado">
+
+                                <option
+                                    value="Pendiente"
+                                    {% if cita.estado ==
+                                    'Pendiente' %}
+                                    selected
+                                    {% endif %}>
+                                    Pendiente
+                                </option>
+
+                                <option
+                                    value="Confirmada"
+                                    {% if cita.estado ==
+                                    'Confirmada' %}
+                                    selected
+                                    {% endif %}>
+                                    Confirmada
+                                </option>
+
+                                <option
+                                    value="Cancelada"
+                                    {% if cita.estado ==
+                                    'Cancelada' %}
+                                    selected
+                                    {% endif %}>
+                                    Cancelada
+                                </option>
+
+                                <option
+                                    value="Atendida"
+                                    {% if cita.estado ==
+                                    'Atendida' %}
+                                    selected
+                                    {% endif %}>
+                                    Atendida
+                                </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botones -->
+                <div class="field is-grouped is-justify-content-center mt-5">
+
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                            Actualizar 
+                        </button>
+                    </div>
+                    <div class="control">
+                        <a href="{{ url_for('cita.index') }}" class="button is-light">
+                            Cancelar
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

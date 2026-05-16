@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Pacientes {% endblock %}
+
+{% block content %}
+
+<h1 class="title has-text-centered">Lista de Pacientes </h1>
+<a href="{{ url_for('paciente.create') }}" class="button is-primary mb-3"> Nuevo </a>
+<table class="table is-striped is-hoverable is-fullwidth">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Direccion</th>
+            <th>Teléfono</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in pacientes %}
+        <tr>
+            <td>{{ item.id_paciente }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.edad }}</td>
+            <td>{{ item.direccion }}</td>
+            <td>{{ item.telefono }}</td>
+            
+            <td>
+                <a href="{{url_for('paciente.edit',id_paciente=item.id_paciente)}}" class="button is-warning">Editar</a>
+            </td>
+            <td>
+                <a href="{{url_for('paciente.delete',id_paciente=item.id_paciente)}}" class="button is-danger">Eliminar</a>
+            </td>
+            <th>
+            <a href="{{ url_for('paciente.historial', id_paciente=item.id_paciente) }}" class="button is-info">Historial</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

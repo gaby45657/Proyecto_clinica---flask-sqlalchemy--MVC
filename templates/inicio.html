@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+
+<div>
+
+</div>
+
+<section class="hero is-primary is-small" >
+    <div class="hero-body">
+        <div class="container has-text-centered">
+
+            <h1 class="title is-1 mt-4">
+                Sistema de Gestión Clínica
+            </h1>
+
+            <h2 class="subtitle is-4">
+                Administración de médicos, pacientes,
+                consultas y agenda de citas
+            </h2>
+             <!-- Logo -->
+            <figure class="image is-inline-block mb-2">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}"
+                     alt="Logo Clínica"
+                     style="max-height: 80px;"
+                     class="is-rounded">
+            </figure>
+           
+
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2 class="title has-text-centered mb-5"> Módulos del Sistema</h2>
+
+        <div class="columns is-multiline">
+
+            <!-- MÉDICOS -->
+            <div class="column is-6-tablet is-3-desktop">
+                <div class="card">
+                    <div class="card-content has-text-centered">
+                        <span class="icon is-large">
+                            <i class="fas fa-user-doctor fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4 mt-4"> Médicos</h3>
+                        <p>
+                            Registro y administración
+                            de médicos de la clínica.
+                        </p>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ url_for('medico.index') }}"
+                           class="button is-primary is-focused is-fullwidth">
+                            Ver Médicos
+                        </a>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- PACIENTES -->
+            <div class="column is-6-tablet is-3-desktop">
+                <div class="card">
+                    <div class="card-content has-text-centered">
+                        <span class="icon is-large">
+                            <i class="fas fa-user-injured fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4 mt-4">Pacientes</h3>
+                        <p>
+                            Administración de pacientes
+                            registrados.
+                        </p>
+
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ url_for('paciente.index') }}" class="button is-primary is-focused is-fullwidth">
+                            Ver Pacientes
+                        </a>
+                    </footer>
+
+                </div>
+            </div>
+
+            <!-- CONSULTAS -->
+            <div class="column is-6-tablet is-3-desktop">
+                <div class="card">
+                    <div class="card-content has-text-centered">
+                        <span class="icon is-large">
+                            <i class="fas fa-file-medical fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4 mt-4">
+                            Consultas
+                        </h3>
+                        <p>
+                            Registro de diagnósticos,
+                            tratamientos e historial.
+                        </p>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ url_for('consulta.index') }}"
+                           class="button is-primary is-focused is-fullwidth">
+                            Ver Consultas
+                        </a>
+                    </footer>
+
+                </div>
+            </div>
+
+            <!-- CITAS -->
+            <div class="column is-6-tablet is-3-desktop">
+                <div class="card">
+                    <div class="card-content has-text-centered">
+                        <span class="icon is-large">
+                            <i class="fas fa-calendar-check fa-3x"></i>
+                        </span>
+                        <h3 class="title is-4 mt-4">
+                            Agenda de Citas
+                        </h3>
+                        <p>
+                            Programación de citas
+                            médicas de pacientes.
+                        </p>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ url_for('cita.index') }}"
+                           class="button is-primary is-focused is-fullwidth">
+                            Ver Citas
+                        </a>
+                    </footer>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

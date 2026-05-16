@@ -1,0 +1,63 @@
+{% extends 'base.html' %} 
+{% block title %} Medicos | Crear {% endblock %} 
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title has-text-centered">Registro de Médico</h1>
+       
+        <form action="{{ url_for('medico.create') }}"method="POST">
+            <!-- Nombre -->
+            <div class="field">
+                <label class="label">Nombre</label>
+                <div class="control">
+                    <input class="input" type="text" name="nombre" required>
+                </div>
+            </div>
+            <!-- Especialidad -->
+            <div class="field">
+                <label class="label">Especialidad</label>
+                <div class="control">
+                    <input class="input" type="text" name="especialidad" required>
+                </div>
+            </div>
+            <!-- Teléfono -->
+            <div class="field">
+                <label class="label">Teléfono</label>
+                <div class="control">
+                    <input class="input" type="text" name="telefono" required>
+                </div>
+            </div>
+            <!-- Correo -->
+            <div class="field">
+                <label class="label">Correo electrónico</label>
+                <div class="control">
+                    <input class="input" type="email"name="correo" required>
+                </div>
+            </div>
+            <!-- Botones -->
+            <!--<button type="submit" class="button is-primary">Registrar Medico</button>-->
+            <!-- Botones -->
+                <div class="field is-grouped is-justify-content-center mt-5">
+
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                            Registrar Medico
+                        </button>
+                    </div>
+                    <div class="control">
+                        <a href="{{ url_for('medico.index') }}" class="button is-light">
+                            Cancelar
+                        </a>
+                    </div>
+
+                </div>
+
+         
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

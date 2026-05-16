@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Citas
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+            <h1 class="title">Lista de Citas</h1>
+
+            <a href="{{ url_for('cita.create') }}"
+               class="button is-primary">
+                Nueva Cita
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table class="table is-striped is-hoverable is-fullwidth">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Fecha y Hora</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for item in citas %}
+                    <tr>
+
+                        <td>{{ item.id_cita }}</td>
+
+                        <td>
+                            {{ item.paciente.nombre }}
+                        </td>
+
+                        <td>
+                            {{ item.medico.nombre }}
+                        </td>
+
+                        <td>
+                            {{ item.fecha_hora.strftime('%d/%m/%Y %H:%M') }}
+                        </td>
+
+                        <td>
+                            {{ item.motivo }}
+                        </td>
+
+                        <td>
+                            {{ item.estado }}
+                        </td>
+
+                        <td>
+
+                            <a href="{{ url_for('cita.edit',
+                            id_cita=item.id_cita) }}"
+                               class="button is-warning is-small">
+
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+
+                            <a href="{{ url_for('cita.delete',
+                            id_cita=item.id_cita) }}"
+                               class="button is-danger is-small">
+
+                                Eliminar
+                            </a>
+                        
+                        </td>
+
+                    
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

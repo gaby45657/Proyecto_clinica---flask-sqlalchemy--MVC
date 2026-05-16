@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="main navigation" >
+
+    <div class="navbar-brand"  >
+            <!-- Logo -->
+       <a class="navbar-item" href="{{ url_for('home') }}">
+         <img src="{{ url_for('static', filename='img/logo.jpg') }}"
+         alt="Logo Clínica"
+         style="max-height: 62px;">
+       </a>
+
+       
+       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item " href="{{ url_for('home') }}">Inicio</a>
+      <a class="navbar-item {{is_active('/medicos/')}}" href="/medicos/">Medicos</a>
+      <a class="navbar-item {{is_active('/pacientes/')}}" href="/pacientes/">Pacientes</a>
+      <a class="navbar-item {{is_active('/consultas/')}}" href="/consultas/">Consultas</a>
+      
+      
+
+      
+          
+      
+    </div>
+  </div>
+
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary"  href="/citas/"><strong>Agenda de Citas</strong> </a>
+        <a class="button is-light" href="{{ url_for('usuario.logout') }}">Cerrar Sesion</a>
+      </div>
+    </div>
+
+
+    </div>
+</nav>
+
+<!-- CONTENIDO -->
+<main class="main-content">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer has-background-primary p-4">
+    <div class="content has-text-centered has-text-black">
+
+        <p class="title is-6 mb-1">
+            Clínica JCDental
+        </p>
+
+        <p class="is-size-7 mb-2">
+            Sistema de Gestión Clínica para médicos,
+            pacientes, consultas y agenda de citas.
+        </p>
+
+        <p class="is-size-7 mb-0">
+            © 2026 | Desarrollado por
+            <strong>Gabriela Choque</strong>
+        </p>
+
+    </div>
+</footer>
+
+</body>
+</html>

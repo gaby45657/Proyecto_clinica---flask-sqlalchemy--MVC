@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %} Consultas | Crear {% endblock %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <div class="box">
+            <h1 class="title has-text-centered">Registro de Consulta </h1>
+            <form action="{{ url_for('consulta.create') }}" method="POST">
+
+                <!-- Paciente -->
+                <div class="field">
+                    <label class="label">Paciente</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="id_paciente" required>
+                                <option value="">Seleccione un paciente</option>
+                                {% for paciente in pacientes %}
+                                    <option value="{{ paciente.id_paciente }}">{{ paciente.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Médico -->
+                <div class="field">
+                    <label class="label"> Médico </label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="id_medico" required>
+                                <option value="">Seleccione un médico</option>
+                                {% for medico in medicos %}
+                                    <option value="{{ medico.id_medico }}">{{ medico.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fecha -->
+                <div class="field">
+                    <label class="label">Fecha</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" name="fecha" required>
+                    </div>
+                </div>
+                <!-- Diagnóstico -->
+                <div class="field">
+                    <label class="label">Diagnóstico</label>
+                    <div class="control">
+                        <textarea class="textarea"name="diagnostico" placeholder="Ingrese el diagnóstico" required></textarea>
+                    </div>
+                </div>
+                <!-- Tratamiento -->
+                <div class="field">
+                    <label class="label">Tratamiento</label>
+                    <div class="control">
+                        <textarea class="textarea" name="tratamiento" placeholder="Ingrese el tratamiento" required></textarea>
+                    </div>
+                </div>
+
+
+                <!-- Botones -->
+                <div class="field is-grouped is-justify-content-center mt-5">
+
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                            Registrar Consulta
+                        </button>
+                    </div>
+                    <div class="control">
+                        <a href="{{ url_for('consulta.index') }}" class="button is-light">
+                            Cancelar
+                        </a>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

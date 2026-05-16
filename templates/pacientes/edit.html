@@ -1,0 +1,65 @@
+{% extends 'base.html' %} 
+{% block title %} Pacientes | Editar {% endblock %} 
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title has-text-centered">Actualizacion de Paciente</h1>
+       
+        <form action="{{ url_for('paciente.edit', id_paciente=paciente.id_paciente) }}"method="POST">
+            <!-- Nombre -->
+            <div class="field">
+                <label class="label">Nombre</label>
+                <div class="control">
+                    <input class="input" type="text" name="nombre" value="{{paciente.nombre}}" required>
+                </div>
+            </div>
+            <!-- Edad -->
+            <div class="field">
+                <label class="label">Edad</label>
+                <div class="control">
+                    <input class="input" type="number" name="edad" value="{{paciente.edad}}" required>
+                </div>
+            </div>
+            <!-- Direccion -->
+            <div class="field">
+                <label class="label">Direccion</label>
+                <div class="control">
+                    <input class="input" type="text" name="direccion" value="{{paciente.direccion}}" required>
+                </div>
+            </div>
+            <!-- Teléfono -->
+            <div class="field">
+                <label class="label">Teléfono</label>
+                <div class="control">
+                    <input class="input" type="text" name="telefono" value="{{paciente.telefono}}" required>
+                </div>
+            </div>
+            
+            <!-- Botones -->
+            <!--<button type="submit" class="button is-primary">Actualizar Paciente</button>-->
+
+            <!-- Botones -->
+                <div class="field is-grouped is-justify-content-center mt-5">
+
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                            Actualizar Paciente
+                        </button>
+                    </div>
+                    <div class="control">
+                        <a href="{{ url_for('paciente.index') }}" class="button is-light">
+                            Cancelar
+                        </a>
+                    </div>
+
+                </div>
+
+        
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}
