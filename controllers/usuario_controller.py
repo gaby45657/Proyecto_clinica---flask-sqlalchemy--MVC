@@ -26,9 +26,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        usuario = Usuario.query.filter_by(
-            username=username
-        ).first()
+        usuario = Usuario.query.filter_by( username=username ).first()
 
         if usuario and usuario.verify_password(password):
 
@@ -51,4 +49,4 @@ def logout():
 
     return redirect(url_for('usuario.login'))
 
-# CERRAR SESIÓN
+
